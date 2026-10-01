@@ -31,4 +31,8 @@ npm run preview
 - Career paths and beginner guides
 - Glossary, project ideas, and internship guidance
 
+## Resource detail content
+
+Resource summaries and official URLs are in `src/data/resources.js`. The reusable beginner explanations, journey context, visual steps, first tasks, next steps, and related-resource links are in `src/data/resourceGuidance.js`. Add guidance there when adding a resource so its dynamic detail page has the complete learning flow.
+
 The site is a learning guide and does not replace the official services it describes. Check each provider's official website for current details.

@@ -1,6 +1,46 @@
-const entry = (id, name, category, tagline, url, what, why, who, when, how, terms, firstTask, next, level = 'Beginner') => ({
-  id, name, category, tagline, url, what, why, who, when, how, terms, firstTask, next, level,
-})
+import { getResourceGuidance } from './resourceGuidance.js'
+
+const difficultyLevels = {
+  leetcode: 'Beginner after basics',
+  geeksforgeeks: 'Beginner-friendly',
+  codechef: 'Beginner to intermediate',
+  codeforces: 'Intermediate practice',
+  hackerrank: 'Beginner-friendly',
+  github: 'Beginner-friendly',
+  linkedin: 'Beginner-friendly',
+  vscode: 'Beginner-friendly',
+  git: 'Beginner to intermediate',
+  postman: 'Beginner after web basics',
+  vercel: 'Beginner after web basics',
+  netlify: 'Beginner after web basics',
+  aws: 'Beginner concepts; setup varies',
+  azure: 'Beginner concepts; setup varies',
+  'google-cloud': 'Beginner concepts; setup varies',
+  figma: 'Beginner-friendly',
+  notion: 'Beginner-friendly',
+  internships: 'Varies by opportunity',
+  jobs: 'Varies by role',
+  resume: 'Beginner-friendly',
+  portfolio: 'Beginner-friendly',
+}
+
+const entry = (id, name, category, tagline, url, what, why, who, when, how, terms, firstTask, next, level = 'Beginner') => {
+  const detail = getResourceGuidance(id, terms)
+  return {
+    id, name, category, tagline, url, what, why, who, when, how, terms, firstTask, next, level,
+    purpose: detail.purpose,
+    overview: detail.overview,
+    whyItMatters: detail.whyItMatters,
+    journey: detail.journey,
+    visualSteps: detail.visualSteps,
+    howToStart: detail.howToStart,
+    importantTerms: detail.importantTerms,
+    firstTasks: detail.firstTasks,
+    nextSteps: detail.nextSteps,
+    relatedResources: detail.relatedResources,
+    difficulty: difficultyLevels[id] ?? level,
+  }
+}
 
 export const resources = [
   entry('leetcode', 'LeetCode', 'Coding & DSA', 'Practice coding problems and prepare for technical interviews.', 'https://leetcode.com/', 'An online platform for practicing programming problems.', 'Regular practice can help you learn to reason about algorithms and communicate solutions.', 'Students learning data structures and algorithms or preparing for coding interviews.', 'After learning basic programming and simple data structures.', ['Choose a topic you have studied.', 'Try a problem before reading hints.', 'Review the solution and note a pattern you learned.'], ['Problem', 'Test case', 'Time complexity'], 'Solve one easy array problem and write down your approach.', 'Study arrays, strings, and then other DSA topics in sequence.'),
